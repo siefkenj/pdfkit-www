@@ -1,6 +1,6 @@
 P = window.pdfkit = {}
 modules = P.modules = {}
-require = P.require = (name) ->
+require = P.require = (name)->
   if ignored.indexOf(name) != -1
     {}
   else if modules[name]
@@ -10,5 +10,3 @@ require = P.require = (name) ->
   else
     throw new Error("missing module " + name)
 __dirname = "src/pdfkit/lib"
-Buffer = {}
-Buffer.isBuffer = -> false

@@ -1,10 +1,10 @@
 Doc = pdfkit.require('pdfkit')
 class window.PDFDocument extends Doc
-  constructor: (options) ->
+  constructor: (options)->
     super(options)
     @compress = false
 
-  b64encode: (string) ->
+  b64encode: (string)->
     if window.btoa
       btoa(string)
     else if window.Base64
@@ -14,8 +14,6 @@ class window.PDFDocument extends Doc
 
   dataURI: ->
     'data:application/pdf;base64,' + @b64encode(@output())
-
-  initImages: ->
 
 Font = pdfkit.require('../font')
 Font.prototype.embedStandard = ->

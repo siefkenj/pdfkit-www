@@ -5,7 +5,7 @@ require 'stringio'
 require 'json'
 
 def ignored
-  ['flate', './font/ttf', './font/subset', './mixins/images']
+  ['./font/ttf', './font/subset']
 end
 
 def resolve(name, relative_to)
@@ -86,7 +86,7 @@ def wrapped(name, filename)
     if filename.end_with? 'coffee'
       src = CoffeeScript.compile(src, bare: true)
     end
-      
+
     output = <<EOF
 (function(){
   var module = {exports:{}};
@@ -150,8 +150,8 @@ file 'src/font_metrics' => [:fonts]
 file 'dist/pdfkit.js' => Dir["src/**/*.coffee"] + ['Rakefile', 'dist', 'src/font_metrics'] do
   targets = []
   targets.push ['pdfkit', "src/pdfkit/lib/document.coffee"]
-  
-  Dir['src/font_metrics/*'].each do |font_file| 
+
+  Dir['src/font_metrics/*'].each do |font_file|
     font_name = font_file[17...-3]
     puts "Adding font #{font_name}"
     targets.push ["font_metrics/#{font_name}"]
