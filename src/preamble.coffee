@@ -10,3 +10,5 @@ require = P.require = (name)->
   else
     throw new Error("missing module " + name)
 __dirname = "src/pdfkit/lib"
+Buffer = {}
+Buffer.isBuffer = -> false
