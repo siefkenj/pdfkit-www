@@ -73,18 +73,18 @@ def rdeps(filename, seen=nil)
 end
 
 def preamble
-  CoffeeScript.compile(File.read('src/preamble.coffee'), bare: true)
+  CoffeeScript.compile(File.read('src/preamble.coffee'), :bare => true)
 end
 
 def tail
-  CoffeeScript.compile(File.read('src/tail.coffee'), bare: true)
+  CoffeeScript.compile(File.read('src/tail.coffee'), :bare => true)
 end
 
 def wrapped(name, filename)
   open(filename) do |f|
     src = f.read
     if filename.end_with? 'coffee'
-      src = CoffeeScript.compile(src, bare: true)
+      src = CoffeeScript.compile(src, :bare => true)
     end
 
     output = <<EOF
